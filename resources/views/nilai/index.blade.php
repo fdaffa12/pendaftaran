@@ -57,7 +57,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Nilai Kelas 5 Semster 1: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="number" name="n_bind_kel5_sem1" value="{{old('n_bind_kel5_sem1')}}" placeholder="Nilai Bahasa Indonesia Kelas 5 Semester 1">
+                      <input class="form-control" type="number" name="n_bind_kel5_sem1" value="{{old('n_bind_kel5_sem1')}}" placeholder="Nilai B.Indonesia Kelas 5 Semester 1">
                       @error('n_bind_kel5_sem1')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror
@@ -66,7 +66,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Nilai Kelas 5 Semster 2: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="number" name="n_bind_kel5_sem2" value="{{old('n_bind_kel5_sem2')}}" placeholder="Nilai Bahasa Indonesia Kelas 5 Semester 2">
+                      <input class="form-control" type="number" name="n_bind_kel5_sem2" value="{{old('n_bind_kel5_sem2')}}" placeholder="Nilai B.Indonesia Kelas 5 Semester 2">
                       @error('n_bind_kel5_sem1')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror
@@ -75,7 +75,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Nilai Kelas 6 Semster 1: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="number" name="n_bind_kel6_sem1" value="{{old('n_bind_kel6_sem1')}}" placeholder="Nilai Bahasa Indonesia Kelas 6 Semester 1">
+                      <input class="form-control" type="number" name="n_bind_kel6_sem1" value="{{old('n_bind_kel6_sem1')}}" placeholder="Nilai B.Indonesia Kelas 6 Semester 1">
                       @error('n_bind_kel5_sem1')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror
@@ -88,7 +88,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Nilai Kelas 5 Semster 1: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="number" name="n_bing_kel5_sem1" value="{{old('n_bing_kel5_sem1')}}" placeholder="Nilai Bahasa Inggris Kelas 5 Semester 1">
+                      <input class="form-control" type="number" name="n_bing_kel5_sem1" value="{{old('n_bing_kel5_sem1')}}" placeholder="Nilai B.Inggris Kelas 5 Semester 1">
                       @error('n_bing_kel5_sem1')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror
@@ -97,7 +97,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Nilai Kelas 5 Semster 2: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="number" name="n_bing_kel5_sem2" value="{{old('n_bing_kel5_sem2')}}" placeholder="Nilai Bahasa Inggris Kelas 5 Semester 2">
+                      <input class="form-control" type="number" name="n_bing_kel5_sem2" value="{{old('n_bing_kel5_sem2')}}" placeholder="Nilai B.Inggris Kelas 5 Semester 2">
                       @error('n_bing_kel5_sem1')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror
@@ -106,7 +106,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Nilai Kelas 6 Semster 1: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="number" name="n_bing_kel6_sem1" value="{{old('n_bing_kel6_sem1')}}" placeholder="Nilai Bahasa Inggris Kelas 6 Semester 1">
+                      <input class="form-control" type="number" name="n_bing_kel6_sem1" value="{{old('n_bing_kel6_sem1')}}" placeholder="Nilai B.Inggris Kelas 6 Semester 1">
                       @error('n_bing_kel5_sem1')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror
@@ -167,7 +167,7 @@
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label">Nilai Kelas 5 Semster 1: <span class="tx-danger">*</span></label>
-                          <input class="form-control" type="number" name="n_bind_kel5_sem1" value="{{$dt->n_bind_kel5_sem1}}" placeholder="Nilai Bahasa Indonesia Kelas 5 Semester 1">
+                          <input class="form-control" type="number" name="n_bind_kel5_sem1" value="{{$dt->n_bind_kel5_sem1}}" placeholder="Nilai B.Indonesia Kelas 5 Semester 1">
                           @error('n_bind_kel5_sem1')
                             <strong class="text-danger">{{$message}}</strong>
                           @enderror
@@ -176,7 +176,7 @@
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label">Nilai Kelas 5 Semster 2: <span class="tx-danger">*</span></label>
-                          <input class="form-control" type="number" name="n_bind_kel5_sem2" value="{{$dt->n_bind_kel5_sem2}}" placeholder="Nilai Bahasa Indonesia Kelas 5 Semester 2">
+                          <input class="form-control" type="number" name="n_bind_kel5_sem2" value="{{$dt->n_bind_kel5_sem2}}" placeholder="Nilai B.Indonesia Kelas 5 Semester 2">
                           @error('n_bind_kel5_sem1')
                             <strong class="text-danger">{{$message}}</strong>
                           @enderror
@@ -185,7 +185,7 @@
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label">Nilai Kelas 6 Semster 1: <span class="tx-danger">*</span></label>
-                          <input class="form-control" type="number" name="n_bind_kel6_sem1" value="{{$dt->n_bind_kel6_sem1}}" placeholder="Nilai Bahasa Indonesia Kelas 6 Semester 1">
+                          <input class="form-control" type="number" name="n_bind_kel6_sem1" value="{{$dt->n_bind_kel6_sem1}}" placeholder="Nilai B.Indonesia Kelas 6 Semester 1">
                           @error('n_bind_kel5_sem1')
                             <strong class="text-danger">{{$message}}</strong>
                           @enderror
@@ -198,4 +198,41 @@
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label">Nilai Kelas 5 Semster 1: <span class="tx-danger">*</span></label>
-                          <input class
+                          <input class="form-control" type="number" name="n_bing_kel5_sem1" value="{{$dt->n_bing_kel5_sem1}}" placeholder="Nilai B.Inggris Kelas 5 Semester 1">
+                          @error('n_bing_kel5_sem1')
+                            <strong class="text-danger">{{$message}}</strong>
+                          @enderror
+                        </div>
+                      </div><!-- col-4 -->
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label">Nilai Kelas 5 Semster 2: <span class="tx-danger">*</span></label>
+                          <input class="form-control" type="number" name="n_bing_kel5_sem2" value="{{$dt->n_bing_kel5_sem2}}" placeholder="Nilai B.Inggris Kelas 5 Semester 2">
+                          @error('n_bing_kel5_sem1')
+                            <strong class="text-danger">{{$message}}</strong>
+                          @enderror
+                        </div>
+                      </div><!-- col-4 -->
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label">Nilai Kelas 6 Semster 1: <span class="tx-danger">*</span></label>
+                          <input class="form-control" type="number" name="n_bing_kel6_sem1" value="{{$dt->n_bing_kel6_sem1}}" placeholder="Nilai B.Inggris Kelas 6 Semester 1">
+                          @error('n_bing_kel5_sem1')
+                            <strong class="text-danger">{{$message}}</strong>
+                          @enderror
+                        </div>
+                      </div><!-- col-4 -->
+                    </div><!-- row -->
+
+                <div class="form-layout-footer">
+                  <button class="btn btn-info mg-r-5">Update</button>
+                </div><!-- form-layout-footer -->
+            </form>
+            @endif
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+@endsection
