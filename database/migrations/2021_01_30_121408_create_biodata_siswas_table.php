@@ -19,7 +19,7 @@ class CreateBiodataSiswasTable extends Migration
             $table->string('nik');
             $table->string('nama');
             $table->string('tempat_lahir',255);
-            $table->datetime('tanggal_lahir');
+            $table->date('tanggal_lahir');
             $table->string('agama');
             $table->string('alamat');
             $table->string('asal_sekolah');

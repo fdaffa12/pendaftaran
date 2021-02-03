@@ -63,6 +63,11 @@ route::get('nilai', 'NilaiController@index');
 Route::post('nilai/{users}', 'NilaiController@storeNilai');
 Route::put('nilai/{users}', 'NilaiController@updateNilai');
 
+//Peserta
+Route::get('peserta', 'Admin\PesertaController@index');
+Route::get('peserta/details/{name}', 'Admin\PesertaController@detail');
+Route::get('peserta/{id}/lulus','Admin\PesertaController@lulus');
+
 Route::get('keluar',function(){
     \Auth::logout();
     return redirect('/');

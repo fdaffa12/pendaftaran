@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function biodata_r(){
+      return $this->hasOne('App\BiodataSiswa', 'users', 'id')->withDefault(['nik'=>null,'nama'=>null,'tempat_lahir'=>null,'tanggal_lahir'=>null,'agama'=>null,'alamat'=>null,'asal_sekolah'=>null,'nisn'=>null]);
+    }
+
+    public function biodata_ibu(){
+      return $this->hasOne('App\BiodataIbu', 'users', 'id')->withDefault(['nik'=>null,'nama_ibu'=>null,'tempat_lahir'=>null,'tanggal_lahir'=>null,'agama'=>null,'alamat'=>null,'phone'=>null,'pekerjaan'=>null]);
+    }
+
+    public function biodata_bpk(){
+      return $this->hasOne('App\BiodataBapak', 'users', 'id')->withDefault(['nik'=>null,'nama_bapak'=>null,'tempat_lahir'=>null,'tanggal_lahir'=>null,'agama'=>null,'alamat'=>null,'phone'=>null,'pekerjaan'=>null]);
+    }
 }
