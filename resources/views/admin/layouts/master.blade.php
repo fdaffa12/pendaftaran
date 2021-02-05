@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="{{asset('adminlte')}}/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('adminlte')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- SweetAlert -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -115,6 +117,41 @@
   </aside>
 
 @yield ('content')
+
+<div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+      <div class="modal-dialog modal-default modal-dialog-centered modal-" role="document">
+        <div class="modal-content bg-gradient-danger">
+
+          <div class="modal-header">
+            <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+
+            <div class="py-3 text-center">
+              <i class="ni ni-bell-55 ni-3x"></i>
+              <h4 class="heading mt-4">Apakah kamu yakin ingin menghapus data ini?</h4>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <form action="" method="post">
+              {{ csrf_field() }}
+              {{ method_field('delete') }}
+              <p>
+              <button type="submit" class="btn btn-danger btn-flat btn-sm menu-sidebar">Ok, Hapus</button>
+                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Close</button>
+              </p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+</div>
 
 <footer class="main-footer">
   <div class="pull-right hidden-xs">
@@ -320,6 +357,8 @@
 </div>
 <!-- ./wrapper -->
 
+@include('sweetalert::alert')
+
 <!-- jQuery 3 -->
 <script src="{{asset('adminlte')}}/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -357,5 +396,32 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="{{asset('adminlte')}}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte')}}/dist/js/demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<!-- <script>
+
+  function archiveFunction() {
+  event.preventDefault(); // prevent form submit
+  var form = event.target.form; // storing the form
+          swal({
+    title: "Are you sure?",
+    text: "But you will still be able to retrieve this file.",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, archive it!",
+    cancelButtonText: "No, cancel please!",
+    closeOnConfirm: false,
+    closeOnCancel: false
+  },
+  function(isConfirm){
+    if (isConfirm) {
+      form.submit();          // submitting the form when user press yes
+    } else {
+      swal("Cancelled", "Your imaginary file is safe :)", "error");
+    }
+  });
+  }
+
+</script> -->
 </body>
 </html>

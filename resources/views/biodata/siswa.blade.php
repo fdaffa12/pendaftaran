@@ -80,7 +80,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Asal Sekolah: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="text" name="asal_sekolah" value="{{old('asal_sekolah')}}" placeholder="Asal Sekolah" id="datepicker">
+                      <input class="form-control" type="text" name="asal_sekolah" value="{{old('asal_sekolah')}}" placeholder="Asal Sekolah" >
                       @error('asal_sekolah')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror

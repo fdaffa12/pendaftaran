@@ -114,6 +114,10 @@
                   </div><!-- col-4 -->
                 </div><!-- row -->
 
+                <input type="hidden" name="rata_bing" value="{{$rata_bing}}">
+                <input type="hidden" name="rata_bind" value="{{$rata_bind}}">
+                <input type="hidden" name="rata_pai" value="{{$rata_pai}}">
+
                 <div class="form-layout-footer">
                   <button class="btn btn-info mg-r-5">Masukan</button>
                 </div><!-- form-layout-footer -->
@@ -223,6 +227,10 @@
                         </div>
                       </div><!-- col-4 -->
                     </div><!-- row -->
+
+                    <input type="hidden" name="rata_bing" value="{{$rata_bing}}">
+                    <input type="hidden" name="rata_bind" value="{{$rata_bind}}">
+                    <input type="hidden" name="rata_pai" value="{{$rata_pai}}">
 
                 <div class="form-layout-footer">
                   <button class="btn btn-info mg-r-5">Update</button>

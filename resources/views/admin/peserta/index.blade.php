@@ -27,13 +27,13 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>action</th>
-                                    <th>photo</th>
-                                    <th>name</th>
-                                    <th>id registrasi</th>
-                                    <th>is melengkapi??</th>
-                                    <th>is verifikasi??</th>
-                                    <th>is lulus?</th>
+                                    <th>Action</th>
+                                    <th>Photo</th>
+                                    <th>Name</th>
+                                    <th>Id Registrasi</th>
+                                    <th>Melengkapi</th>
+                                    <th>Verivikasi</th>
+                                    <th>Lulus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,7 +43,8 @@
                                     <td>
                                             <div style="width:60px">
                                                 <a href="{{ url('peserta/'.$dt->id) }}" class="btn btn-warning btn-xs btn-edit" id="edit"><i class="fa fa-pencil-square-o"></i></a>
-                                                <a href="{{url('peserta/details/'.$dt->name)}}" class="btn btn-success btn-xs btn-info" id="detail"><i class="fa fa-info-circle"></i></a>
+                                                <a href="{{url('peserta/details/'.$dt->id)}}" class="btn btn-success btn-xs btn-info" id="detail"><i class="fa fa-info-circle"></i></a>
+                                                <a href="{{ url('peserta/'.$dt->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-xs btn-info" id="detail"><i class="fa fa-trash-o"></i></a>
 
                                                 <button href="{{ url('peserta/'.$dt->id) }}" class="btn btn-danger btn-xs btn-hapus" id="delete"><i class="fa fa-trash-o"></i></button>
                                             </div>
@@ -77,7 +78,7 @@
                                         @if($dt->is_lulus == null)
                                         <a href="{{ url('peserta/'.$dt->id.'/lulus') }}" class="btn btn-xs btn-primary">Luluskan</a>
                                         @else
-                                        <label class="label label-info">Sudah Lulus</label>
+                                        <label class="label label-info">Sudah Lulus</label> <a href="{{ url('peserta/'.$dt->id.'/lulus-batal') }}" class="btn btn-xs btn-danger"> Batal Lulus</a>
                                         @endif
                                     </td>
                                 </tr>

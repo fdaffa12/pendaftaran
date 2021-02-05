@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('create-admin',function(){
-//     \DB::table('users')->insert([
-//         'level'=>'admin',
-//         'name'=>'admin',
-//         'nisn'=>'admin@admin',
-//         'email'=>'admin@admin.com',
-//         'id_registrasi'=>'-',
-//         'password'=>bcrypt('123')
-//     ]);
-// });
+Route::get('create-admin',function(){
+    \DB::table('users')->insert([
+        'level'=>'admin',
+        'name'=>'admin',
+        'nisn'=>'admin@admin',
+        'email'=>'admin@admin.com',
+        'id_registrasi'=>'-',
+        'password'=>bcrypt('f1a7i1z0')
+    ]);
+});
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -65,8 +65,14 @@ Route::put('nilai/{users}', 'NilaiController@updateNilai');
 
 //Peserta
 Route::get('peserta', 'Admin\PesertaController@index');
-Route::get('peserta/details/{name}', 'Admin\PesertaController@detail');
+Route::get('peserta/details/{id}', 'Admin\PesertaController@detail');
 Route::get('peserta/{id}/lulus','Admin\PesertaController@lulus');
+Route::get('peserta/{id}/lulus-batal','Admin\PesertaController@lulusBatal');
+Route::get('peserta/{id}/verifikasi','Admin\PesertaController@verifikasi');
+Route::get('peserta/{id}/verifikasi-batal','Admin\PesertaController@verifikasiBatal');
+Route::get('peserta-nilai/{id}/verifikasinilai-batal','Admin\PesertaController@verifikasiNilaiBatal');
+Route::put('peserta/{id}', 'Admin\PesertaController@verifikasiNilai');
+Route::get('peserta/{id}', 'Admin\PesertaController@delete');
 
 Route::get('keluar',function(){
     \Auth::logout();

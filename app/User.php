@@ -48,4 +48,12 @@ class User extends Authenticatable
     public function biodata_bpk(){
       return $this->hasOne('App\BiodataBapak', 'users', 'id')->withDefault(['nik'=>null,'nama_bapak'=>null,'tempat_lahir'=>null,'tanggal_lahir'=>null,'agama'=>null,'alamat'=>null,'phone'=>null,'pekerjaan'=>null]);
     }
+
+    public function dokumen(){
+      return $this->hasOne('App\Dokumen', 'users', 'id')->withDefault(['kartu_keluarga'=>null,'akta'=>null,'r_kel5_sem1'=>null,'r_kel5_sem2'=>null,'r_kel6_sem1'=>null,'prestasi'=>null,'kis'=>null]);
+    }
+
+    public function nilai(){
+      return $this->hasOne('App\Nilai', 'users', 'id')->withDefault(['n_bing_kel5_sem1'=>null,'n_bing_kel5_sem2'=>null,'n_bing_kel6_sem1'=>null,'n_pai_kel5_sem1'=>null,'n_pai_kel5_sem2'=>null,'n_pai_kel6_sem1'=>null,'n_bind_kel5_sem1'=>null,'n_bind_kel5_sem2'=>null,'n_bind_kel6_sem1'=>null, 'rata_bind'=>null, 'rata_bing'=>null, 'rata_pai'=>null]);
+    }
 }

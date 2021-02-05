@@ -63,7 +63,11 @@
               <p class="text-muted">{{$peserta->biodata_r->alamat}}</p>
               <hr>
 
-              <a href="#" class="btn btn-primary btn-block"><b>LULUSKAN</b></a>
+              @if($peserta->is_verifikasi == null)
+              <a href="{{ url('peserta/'.$peserta->id.'/verifikasi') }}" class="btn btn-primary btn-block"><b>Verivikasi</b></a>
+              @else
+              <a href="{{ url('peserta/'.$peserta->id.'/verifikasi-batal') }}" class="btn btn-warning btn-block"><b>Batalkan Verivikasi</b></a>
+              @endif
             </div>
             <!-- /.box-body -->
           </div>
@@ -74,8 +78,9 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#activity" data-toggle="tab">Biodata Wali</a></li>
-              <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-              <li><a href="#settings" data-toggle="tab">Settings</a></li>
+              <li><a href="#timeline" data-toggle="tab">Dokumen</a></li>
+              <li><a href="#nilai" data-toggle="tab">Nilai</a></li>
+              <!-- <li><a href="#settings" data-toggle="tab">Edit Data Peserta</a></li> -->
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
@@ -104,154 +109,218 @@
               <div class="tab-pane" id="timeline">
                 <!-- The timeline -->
                 <ul class="timeline timeline-inverse">
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-red">
-                          10 Feb. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
                   <li>
-                    <i class="fa fa-envelope bg-blue"></i>
+                    <i class="fa fa-file bg-purple"></i>
 
                     <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
 
-                      <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+                      <h3 class="timeline-header"><a href="#">Dokumen</a> {{$peserta->name}}</h3>
 
                       <div class="timeline-body">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                        quora plaxo ideeli hulu weebly balihoo...
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-primary btn-xs">Read more</a>
-                        <a class="btn btn-danger btn-xs">Delete</a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-user bg-aqua"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                      <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                      </h3>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-comments bg-yellow"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                      <div class="timeline-body">
-                        Take me to your leader!
-                        Switzerland is small and neutral!
-                        We are more like Germany, ambitious and misunderstood!
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-camera bg-purple"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                      <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
+                        <a href="{{asset($peserta->dokumen->kartu_keluarga)}}" download="" class="btn btn-primary btn-xs"> Download Kartu Keluarga</a>
+                        <a href="{{asset($peserta->dokumen->akta)}}" download="" class="btn btn-primary btn-xs"> Download Akta</a>
+                        <a href="{{asset($peserta->dokumen->r_kel5_sem1)}}" download="" class="btn btn-primary btn-xs"> Rapot Kelas 5 Semester 1</a>
+                        <a href="{{asset($peserta->dokumen->r_kel5_sem2)}}" download="" class="btn btn-primary btn-xs"> Rapot Kelas 5 Semester 2</a>
+                        <a href="{{asset($peserta->dokumen->r_kel6_sem1)}}" download="" class="btn btn-primary btn-xs"> Rapot Kelas 6 Semester 1</a>
+                        <a href="{{asset($peserta->dokumen->prestasi)}}" download="" class="btn btn-primary btn-xs"> Prestasi</a>
+                        <a href="{{asset($peserta->dokumen->kis)}}" download="" class="btn btn-primary btn-xs"> Download KIS</a>
                       </div>
                     </div>
                   </li>
                   <!-- END timeline item -->
                   <li>
-                    <i class="fa fa-clock-o bg-gray"></i>
+                    <i class="fa fa-user-o bg-gray"></i>
                   </li>
                 </ul>
               </div>
               <!-- /.tab-pane -->
+              <div class="tab-pane" id="nilai">
+                @if($peserta->is_nilai == 1)
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead>
+                                <h3>Nilai PAI</h3>
+                                  <tr>
+                                      <th>Nilai Kelas 5 Semester 1</th>
+                                      <th>Nilai Kelas 5 Semester 2</th>
+                                      <th>Nilai Kelas 6 Semester 1</th>
+                                      <th>Rata - rata nilai PAI</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_pai_kel5_sem1}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_pai_kel5_sem2}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_pai_kel6_sem1}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->rata_pai}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
 
-              <div class="tab-pane" id="settings">
-                <form class="form-horizontal">
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                          <hr>
 
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                          <table class="table table-hover">
+                              <thead>
+                                <h3>Nilai Bahasa Indonesia</h3>
+                                  <tr>
+                                      <th>Nilai Kelas 5 Semester 1</th>
+                                      <th>Nilai Kelas 5 Semester 2</th>
+                                      <th>Nilai Kelas 6 Semester 1</th>
+                                      <th>Rata - rata nilai Bahasa Indonesia</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_bind_kel5_sem1}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_bind_kel5_sem2}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_bind_kel6_sem1}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->rata_bind}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
 
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                          <hr>
 
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                          <table class="table table-hover">
+                              <thead>
+                                <h3>Nilai Bahas Inggris</h3>
+                                  <tr>
+                                      <th>Nilai Kelas 5 Semester 1</th>
+                                      <th>Nilai Kelas 5 Semester 2</th>
+                                      <th>Nilai Kelas 6 Semester 1</th>
+                                      <th>Rata - rata nilai Bahasa Inggris</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_bing_kel5_sem1}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_bing_kel5_sem2}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->n_bing_kel6_sem1}}</td>
+                                    <td style="text-align : center;">{{$peserta->nilai->rata_bing}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
 
-                    <div class="col-sm-10">
-                      <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                        </label>
+                          <a href="{{ url('peserta-nilai/'.$peserta->id.'/verifikasinilai-batal') }}" class="btn btn-warning btn-block"><b>Batalkan Verivikasi</b></a>
                       </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                  </div>
+                @else
+                <!-- <form action="{{ url('peserta/'.$peserta->id) }}" method="POST" enctype="multipart/form-data"> -->
+                <form action="{{ url('peserta/'.$peserta->id)}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  {{ method_field('PUT') }}
+                  <div class="form-layout">
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{session('success')}}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        @endif
+                        <h1>Nilai PAI</h1>
+                        <div class="row mg-b-25">
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 5 Semster 1: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_pai_kel5_sem1" value="{{$peserta->nilai->n_pai_kel5_sem1}}" placeholder="Nilai PAI Kelas 5 Semester 1">
+                              @error('n_pai_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 5 Semster 2: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_pai_kel5_sem2" value="{{$peserta->nilai->n_pai_kel5_sem2}}" placeholder="Nilai PAI Kelas 5 Semester 2">
+                              @error('n_pai_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 6 Semster 1: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_pai_kel6_sem1" value="{{$peserta->nilai->n_pai_kel6_sem1}}" placeholder="Nilai PAI Kelas 6 Semester 1">
+                              @error('n_pai_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                        </div><!-- row -->
+
+                        <h1>Nilai Bahasa Indonesia</h1>
+                        <div class="row mg-b-25">
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 5 Semster 1: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_bind_kel5_sem1" value="{{$peserta->nilai->n_bind_kel5_sem1}}" placeholder="Nilai B.Indonesia Kelas 5 Semester 1">
+                              @error('n_bind_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 5 Semster 2: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_bind_kel5_sem2" value="{{$peserta->nilai->n_bind_kel5_sem2}}" placeholder="Nilai B.Indonesia Kelas 5 Semester 2">
+                              @error('n_bind_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 6 Semster 1: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_bind_kel6_sem1" value="{{$peserta->nilai->n_bind_kel6_sem1}}" placeholder="Nilai B.Indonesia Kelas 6 Semester 1">
+                              @error('n_bind_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                        </div><!-- row -->
+
+                        <h1>Nilai Bahasa Inggris</h1>
+                        <div class="row mg-b-25">
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 5 Semster 1: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_bing_kel5_sem1" value="{{$peserta->nilai->n_bing_kel5_sem1}}" placeholder="Nilai B.Inggris Kelas 5 Semester 1">
+                              @error('n_bing_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 5 Semster 2: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_bing_kel5_sem2" value="{{$peserta->nilai->n_bing_kel5_sem2}}" placeholder="Nilai B.Inggris Kelas 5 Semester 2">
+                              @error('n_bing_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                          <div class="col-lg-4">
+                            <div class="form-group">
+                              <label class="form-control-label">Nilai Kelas 6 Semster 1: <span class="tx-danger">*</span></label>
+                              <input class="form-control" type="number" name="n_bing_kel6_sem1" value="{{$peserta->nilai->n_bing_kel6_sem1}}" placeholder="Nilai B.Inggris Kelas 6 Semester 1">
+                              @error('n_bing_kel5_sem1')
+                                <strong class="text-danger">{{$message}}</strong>
+                              @enderror
+                            </div>
+                          </div><!-- col-4 -->
+                        </div><!-- row -->
+
+                        <input type="hidden" name="rata_bing" value="{{$rata_bing}}">
+                        <input type="hidden" name="rata_bind" value="{{$rata_bind}}">
+                        <input type="hidden" name="rata_pai" value="{{$rata_pai}}">
+
+                    <div class="form-layout-footer">
+                      <button class="btn btn-info mg-r-5">Verifikasi Nilai</button>
+                    </div><!-- form-layout-footer -->
                 </form>
+                @endif
               </div>
               <!-- /.tab-pane -->
-            </div>
             <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->

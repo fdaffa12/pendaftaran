@@ -12,7 +12,7 @@ class BiodataSiswaController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function siswa(){
         $dt = BiodataSiswa::where('users',\Auth::user()->id)->first();
         $cek = BiodataSiswa::where('users',\Auth::user()->id)->count();

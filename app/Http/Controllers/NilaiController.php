@@ -16,7 +16,19 @@ class NilaiController extends Controller
       $dt = Nilai::where('users',\Auth::user()->id)->first();
       $cek = Nilai::where('users',\Auth::user()->id)->count();
 
-      return view('nilai.index', compact('dt', 'cek'));
+      $rata_bing = Nilai::all()->where('users',\Auth::user()->id)->sum(function($t){
+        return ($t->n_bing_kel5_sem1 + $t->n_bing_kel5_sem2 + $t->n_bing_kel6_sem1)/3;
+      });
+
+      $rata_bind = Nilai::all()->where('users',\Auth::user()->id)->sum(function($t){
+        return ($t->n_bind_kel5_sem1 + $t->n_bind_kel5_sem2 + $t->n_bind_kel6_sem1)/3;
+      });
+
+      $rata_pai = Nilai::all()->where('users',\Auth::user()->id)->sum(function($t){
+        return ($t->n_pai_kel5_sem1 + $t->n_pai_kel5_sem2 + $t->n_pai_kel6_sem1)/3;
+      });
+
+      return view('nilai.index', compact('dt', 'cek','rata_bing', 'rata_bind', 'rata_pai'));
     }
 
     public function storeNilai(Request $request, $id){
@@ -30,6 +42,9 @@ class NilaiController extends Controller
           'n_bing_kel5_sem1'=>'required',
           'n_bing_kel5_sem2'=>'required',
           'n_bing_kel6_sem1'=>'required',
+          'rata_bing' => 'required',
+          'rata_bind' => 'required',
+          'rata_pai' => 'required',
       ]);
 
       $data['users'] = $id;
@@ -42,6 +57,10 @@ class NilaiController extends Controller
       $data['n_bing_kel5_sem1'] = $request->n_bing_kel5_sem1;
       $data['n_bing_kel5_sem2'] = $request->n_bing_kel5_sem2;
       $data['n_bing_kel6_sem1'] = $request->n_bing_kel6_sem1;
+      $data['n_bing_kel6_sem1'] = $request->n_bing_kel6_sem1;
+      $data['rata_bing'] = $request->rata_bing;
+      $data['rata_bind'] = $request->rata_bind;
+      $data['rata_pai'] = $request->rata_pai;
       $data['created_at'] = date('Y-m-d H:i:s');
       $data['updated_at'] = date('Y-m-d H:i:s');
 
@@ -61,6 +80,9 @@ class NilaiController extends Controller
           'n_bing_kel5_sem1'=>'required',
           'n_bing_kel5_sem2'=>'required',
           'n_bing_kel6_sem1'=>'required',
+          'rata_bing' => 'required',
+          'rata_bind' => 'required',
+          'rata_pai' => 'required',
       ]);
 
       // $data['users'] = $id;
@@ -73,6 +95,9 @@ class NilaiController extends Controller
       $data['n_bing_kel5_sem1'] = $request->n_bing_kel5_sem1;
       $data['n_bing_kel5_sem2'] = $request->n_bing_kel5_sem2;
       $data['n_bing_kel6_sem1'] = $request->n_bing_kel6_sem1;
+      $data['rata_bing'] = $request->rata_bing;
+      $data['rata_bind'] = $request->rata_bind;
+      $data['rata_pai'] = $request->rata_pai;
       // $data['created_at'] = date('Y-m-d H:i:s');
       $data['updated_at'] = date('Y-m-d H:i:s');
 
