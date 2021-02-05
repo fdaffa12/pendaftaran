@@ -63,16 +63,23 @@ route::get('nilai', 'NilaiController@index');
 Route::post('nilai/{users}', 'NilaiController@storeNilai');
 Route::put('nilai/{users}', 'NilaiController@updateNilai');
 
+//Admin Page
+
 //Peserta
-Route::get('peserta', 'Admin\PesertaController@index');
-Route::get('peserta/details/{id}', 'Admin\PesertaController@detail');
-Route::get('peserta/{id}/lulus','Admin\PesertaController@lulus');
-Route::get('peserta/{id}/lulus-batal','Admin\PesertaController@lulusBatal');
-Route::get('peserta/{id}/verifikasi','Admin\PesertaController@verifikasi');
-Route::get('peserta/{id}/verifikasi-batal','Admin\PesertaController@verifikasiBatal');
-Route::get('peserta-nilai/{id}/verifikasinilai-batal','Admin\PesertaController@verifikasiNilaiBatal');
-Route::put('peserta/{id}', 'Admin\PesertaController@verifikasiNilai');
-Route::get('peserta/{id}', 'Admin\PesertaController@delete');
+Route::get('peserta', 'Admin\PesertaController@index')->middleware('admin');
+Route::get('peserta/details/{id}', 'Admin\PesertaController@detail')->middleware('admin');
+Route::get('peserta/{id}/lulus','Admin\PesertaController@lulus')->middleware('admin');
+Route::get('peserta/{id}/lulus-batal','Admin\PesertaController@lulusBatal')->middleware('admin');
+Route::get('peserta/{id}/verifikasi','Admin\PesertaController@verifikasi')->middleware('admin');
+Route::get('peserta/{id}/verifikasi-batal','Admin\PesertaController@verifikasiBatal')->middleware('admin');
+Route::get('peserta-nilai/{id}/verifikasinilai-batal','Admin\PesertaController@verifikasiNilaiBatal')->middleware('admin');
+Route::put('peserta/{id}', 'Admin\PesertaController@verifikasiNilai')->middleware('admin');
+Route::get('peserta-delete/{id}', 'Admin\PesertaController@delete')->middleware('admin');
+Route::get('peserta-edit/{id}', 'Admin\PesertaController@edit')->middleware('admin');
+Route::put('peserta-update/{id}','Admin\PesertaController@updatePeserta')->middleware('admin');
+
+//Data Nilai
+Route::get('data-nilai', 'Admin\NilaiController@index')->middleware('admin');
 
 Route::get('keluar',function(){
     \Auth::logout();

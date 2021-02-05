@@ -117,6 +117,7 @@
                 <input type="hidden" name="rata_bing" value="{{$rata_bing}}">
                 <input type="hidden" name="rata_bind" value="{{$rata_bind}}">
                 <input type="hidden" name="rata_pai" value="{{$rata_pai}}">
+                <input type="hidden" name="rata_semua" value="{{$rata_semua}}">
 
                 <div class="form-layout-footer">
                   <button class="btn btn-info mg-r-5">Masukan</button>
@@ -231,6 +232,7 @@
                     <input type="hidden" name="rata_bing" value="{{$rata_bing}}">
                     <input type="hidden" name="rata_bind" value="{{$rata_bind}}">
                     <input type="hidden" name="rata_pai" value="{{$rata_pai}}">
+                    <input type="hidden" name="rata_semua" value="{{$rata_semua}}">
 
                 <div class="form-layout-footer">
                   <button class="btn btn-info mg-r-5">Update</button>

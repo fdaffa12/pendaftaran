@@ -28,7 +28,11 @@ class NilaiController extends Controller
         return ($t->n_pai_kel5_sem1 + $t->n_pai_kel5_sem2 + $t->n_pai_kel6_sem1)/3;
       });
 
-      return view('nilai.index', compact('dt', 'cek','rata_bing', 'rata_bind', 'rata_pai'));
+      $rata_semua = Nilai::all()->where('users',\Auth::user()->id)->sum(function($t){
+        return ($t->n_pai_kel5_sem1 + $t->n_pai_kel5_sem2 + $t->n_pai_kel6_sem1 + $t->n_bind_kel5_sem1 + $t->n_bind_kel5_sem2 + $t->n_bind_kel6_sem1 + $t->n_bing_kel5_sem1 + $t->n_bing_kel5_sem2 + $t->n_bing_kel6_sem1)/9;
+      });
+
+      return view('nilai.index', compact('dt', 'cek','rata_bing', 'rata_bind', 'rata_pai', 'rata_semua'));
     }
 
     public function storeNilai(Request $request, $id){
@@ -45,6 +49,7 @@ class NilaiController extends Controller
           'rata_bing' => 'required',
           'rata_bind' => 'required',
           'rata_pai' => 'required',
+          'rata_semua' => 'required',
       ]);
 
       $data['users'] = $id;
@@ -61,6 +66,7 @@ class NilaiController extends Controller
       $data['rata_bing'] = $request->rata_bing;
       $data['rata_bind'] = $request->rata_bind;
       $data['rata_pai'] = $request->rata_pai;
+      $data['rata_semua'] = $request->rata_semua;
       $data['created_at'] = date('Y-m-d H:i:s');
       $data['updated_at'] = date('Y-m-d H:i:s');
 
@@ -83,6 +89,7 @@ class NilaiController extends Controller
           'rata_bing' => 'required',
           'rata_bind' => 'required',
           'rata_pai' => 'required',
+          'rata_semua' => 'required',
       ]);
 
       // $data['users'] = $id;
@@ -98,6 +105,7 @@ class NilaiController extends Controller
       $data['rata_bing'] = $request->rata_bing;
       $data['rata_bind'] = $request->rata_bind;
       $data['rata_pai'] = $request->rata_pai;
+      $data['rata_semua'] = $request->rata_semua;
       // $data['created_at'] = date('Y-m-d H:i:s');
       $data['updated_at'] = date('Y-m-d H:i:s');
 

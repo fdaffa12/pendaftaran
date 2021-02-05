@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section ('tittle')
-<title>Home</title>
+<title>Detail {{$peserta->biodata_r->nama}}</title>
 @stop
 
 @section('content')
@@ -122,7 +122,7 @@
                         <a href="{{asset($peserta->dokumen->r_kel5_sem1)}}" download="" class="btn btn-primary btn-xs"> Rapot Kelas 5 Semester 1</a>
                         <a href="{{asset($peserta->dokumen->r_kel5_sem2)}}" download="" class="btn btn-primary btn-xs"> Rapot Kelas 5 Semester 2</a>
                         <a href="{{asset($peserta->dokumen->r_kel6_sem1)}}" download="" class="btn btn-primary btn-xs"> Rapot Kelas 6 Semester 1</a>
-                        <a href="{{asset($peserta->dokumen->prestasi)}}" download="" class="btn btn-primary btn-xs"> Prestasi</a>
+                        <a href="{{asset($peserta->dokumen->prestasi)}}" download="" class="btn btn-primary btn-xs"> Download Prestasi</a>
                         <a href="{{asset($peserta->dokumen->kis)}}" download="" class="btn btn-primary btn-xs"> Download KIS</a>
                       </div>
                     </div>
@@ -313,6 +313,7 @@
                         <input type="hidden" name="rata_bing" value="{{$rata_bing}}">
                         <input type="hidden" name="rata_bind" value="{{$rata_bind}}">
                         <input type="hidden" name="rata_pai" value="{{$rata_pai}}">
+                        <input type="hidden" name="rata_semua" value="{{$rata_semua}}">
 
                     <div class="form-layout-footer">
                       <button class="btn btn-info mg-r-5">Verifikasi Nilai</button>

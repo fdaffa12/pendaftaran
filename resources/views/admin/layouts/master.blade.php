@@ -86,7 +86,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="@yield('dashboard') treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -98,16 +98,17 @@
             <li><a href="{{url('/')}}"><i class="fa fa-circle-o"></i> Halaman Depan</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class=" @yield('peserta') treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Opsi Halaman</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="{{url('peserta')}}"><i class="fa fa-circle-o"></i> Peserta</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            <li><a href="{{url('data-nilai')}}"><i class="fa fa-circle-o"></i> Nilai</a></li>
           </ul>
         </li>
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>

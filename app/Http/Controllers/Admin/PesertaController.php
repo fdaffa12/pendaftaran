@@ -22,6 +22,12 @@ class PesertaController extends Controller
       return view ('admin.peserta.index', compact('data'));
     }
 
+    public function edit($id){
+      $dt = User::where('id', $id)->first();
+
+      return view('admin.peserta.edit',compact('dt'));
+    }
+
     public function detail($id){
   		$peserta = User::where('id', $id)->first();
       $rata_bind = Nilai::all()->where('users',$id)->sum(function($t){
@@ -33,7 +39,12 @@ class PesertaController extends Controller
       $rata_pai = Nilai::all()->where('users',$id)->sum(function($t){
         return ($t->n_pai_kel5_sem1 + $t->n_pai_kel5_sem2 + $t->n_pai_kel6_sem1)/3;
       });
-  		return view('admin.peserta.detail', compact('peserta','rata_bind', 'rata_pai', 'rata_bing'));
+
+      $rata_semua = Nilai::all()->where('users',$id)->sum(function($t){
+        return ($t->n_pai_kel5_sem1 + $t->n_pai_kel5_sem2 + $t->n_pai_kel6_sem1 + $t->n_bind_kel5_sem1 + $t->n_bind_kel5_sem2 + $t->n_bind_kel6_sem1 + $t->n_bing_kel5_sem1 + $t->n_bing_kel5_sem2 + $t->n_bing_kel6_sem1)/9;
+      });
+
+  		return view('admin.peserta.detail', compact('peserta','rata_bind', 'rata_pai', 'rata_bing', 'rata_semua'));
     }
 
     public function updatePeserta(Request $request,$id){
@@ -76,6 +87,7 @@ class PesertaController extends Controller
             $data['rata_bing'] = $request->rata_bing;
             $data['rata_bind'] = $request->rata_bind;
             $data['rata_pai'] = $request->rata_pai;
+            $data['rata_semua'] = $request->rata_semua;
             // $data['created_at'] = date('Y-m-d H:i:s');
             $data['updated_at'] = date('Y-m-d H:i:s');
 

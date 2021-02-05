@@ -1,4 +1,5 @@
 @extends('admin.layouts.master')
+@section('dashboard') active @endsection
 @section ('tittle')
 <title>Home</title>
 @stop
