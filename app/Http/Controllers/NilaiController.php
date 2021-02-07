@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Nilai;
+use App\BiodataSiswa;
+use App\User;
 
 class NilaiController extends Controller
 {
@@ -15,6 +17,9 @@ class NilaiController extends Controller
     public function index(){
       $dt = Nilai::where('users',\Auth::user()->id)->first();
       $cek = Nilai::where('users',\Auth::user()->id)->count();
+      
+      $user_id = \Auth::user()->id;
+      $cek_biodata = BiodataSiswa::where('users',$user_id)->count();
 
       $rata_bing = Nilai::all()->where('users',\Auth::user()->id)->sum(function($t){
         return ($t->n_bing_kel5_sem1 + $t->n_bing_kel5_sem2 + $t->n_bing_kel6_sem1)/3;
@@ -32,7 +37,7 @@ class NilaiController extends Controller
         return ($t->n_pai_kel5_sem1 + $t->n_pai_kel5_sem2 + $t->n_pai_kel6_sem1 + $t->n_bind_kel5_sem1 + $t->n_bind_kel5_sem2 + $t->n_bind_kel6_sem1 + $t->n_bing_kel5_sem1 + $t->n_bing_kel5_sem2 + $t->n_bing_kel6_sem1)/9;
       });
 
-      return view('nilai.index', compact('dt', 'cek','rata_bing', 'rata_bind', 'rata_pai', 'rata_semua'));
+      return view('nilai.index', compact('dt', 'cek','rata_bing', 'rata_bind', 'rata_pai', 'rata_semua', 'cek_biodata'));
     }
 
     public function storeNilai(Request $request, $id){

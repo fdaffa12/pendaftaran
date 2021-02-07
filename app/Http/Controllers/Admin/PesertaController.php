@@ -155,6 +155,18 @@ class PesertaController extends Controller
           return redirect()->back()->with('success','Sukses Membatalkan Kelulusan');
     }
 
+    public function diverifikasi(){
+        $data = User::withCount('biodata_r')->where('is_verifikasi',1)->orderBy('name','asc')->get();
+
+        return view('admin.peserta.index',compact('data'));
+    }
+
+    public function belum_verifikasi(){
+        $data = User::withCount('biodata_r')->whereNull('is_verifikasi')->where('level', null)->orderBy('name','asc')->get();
+
+        return view('admin.peserta.index',compact('data'));
+    }
+
     public function verifikasi($id){
           try {
               User::where('id',$id)->update([

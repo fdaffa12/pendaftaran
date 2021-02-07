@@ -13,14 +13,6 @@
             <form action="{{ url('biodata-siswa/'.\Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="form-layout">
-                    @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    @endif
                 <div class="row mg-b-25">
 
                   <div class="col-lg-4">
@@ -106,14 +98,6 @@
               @csrf
               {{ method_field('PUT') }}
               <div class="form-layout">
-                    @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    @endif
                 <div class="row mg-b-25">
 
                   <div class="col-lg-4">
@@ -146,7 +130,7 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label class="form-control-label">Tanggal Lahir: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="date" name="tanggal_lahir" value="{{$dt->tanggal_lahir}}" placeholder="Tanggal Lahir" id="datepicker">
+                      <input class="form-control" type="date" name="tanggal_lahir" value="{{$dt->tanggal_lahir}}" placeholder="Tanggal Lahir">
                       @error('tanggal_lahir')
                         <strong class="text-danger">{{$message}}</strong>
                       @enderror

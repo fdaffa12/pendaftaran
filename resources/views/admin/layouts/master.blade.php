@@ -46,7 +46,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{url('admin/home')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -63,7 +63,7 @@
         <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="{{url('admin/home')}}" class="dropdown-toggle" data-toggle="dropdown">
               <span class="hidden-xs">Admin</span>
             </a>
             <ul class="dropdown-menu">
@@ -111,7 +111,7 @@
             <li><a href="{{url('data-nilai')}}"><i class="fa fa-circle-o"></i> Nilai</a></li>
           </ul>
         </li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li><a href="{{url('keluar')}}"><i class="fa fa-sign-out"></i> <span>Keluar</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -11,12 +11,12 @@ class BerandaController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index(){
         return view ('beranda.index');
     }
 
     public function storeSiswa(Request $request){
-        
+
     }
 }

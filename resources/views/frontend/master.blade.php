@@ -150,7 +150,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Home</a></li>
+						<li class="nav-item active"><a class="nav-link" href="{{url('/home')}}">Home</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Bioadata </a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -244,6 +244,8 @@
   </div><!-- end copyrights -->
 
   <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+@include('sweetalert::alert')
 
   <!-- ALL JS FILES -->
   <script src="{{asset('frontend')}}/js/all.js"></script>

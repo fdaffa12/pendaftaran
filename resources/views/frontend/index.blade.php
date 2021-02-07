@@ -1,506 +1,325 @@
-@extends('frontend.master')
-@section ('tittle')
-<title>PPDB</title>
-@stop
-
-@section('content')
-
-<div id="carouselExampleControls" class="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
-			<li data-target="#carouselExampleControls" data-slide-to="1"></li>
-			<li data-target="#carouselExampleControls" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<div class="carousel-item active">
-				<div id="home" class="first-section" style="background-image:url('frontend/images/slider-01.jpg');">
-					<div class="dtab">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-12 col-sm-12 text-right">
-									<div class="big-tagline">
-										<h2><strong>SmartEDU </strong> education College</h2>
-										<p class="lead">With Landigoo responsive landing page template, you can promote your all hosting, domain and email services. </p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
-									</div>
-								</div>
-							</div><!-- end row -->            
-						</div><!-- end container -->
-					</div>
-				</div><!-- end section -->
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form method="post" action="{{ url('ppdb') }}" enctype="multipart/form-data">
+			@csrf
+			<h1>Daftar PPDB</h1>
+			<label for="exampleInputEmail1">Nama Peserta</label>
+			<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama Peserta" name="nama">
+			<label for="exampleInputPassword1">NISN</label>
+			<input type="text" name="nisn" class="form-control" id="exampleInputPassword1" placeholder="NISN">
+			<label for="exampleInputPassword1">Email</label>
+			<input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+			<label for="exampleInputFile">Photo Peserta</label>
+			<input type="file" name="photo" id="exampleInputFile">
+			<button type="submit">Daftar PPDB</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="{{ route('login') }}" method="post">
+			{{ csrf_field() }}
+			<h1>Masuk</h1>
+			<span>Jika Sudah Punya Akun Silahkan Masuk</span>
+			<input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email">
+			@error('email')
+				<span class="help-block">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+			<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
+			@error('password')
+				<span class="help-block">
+					<strong>{{ $message }}</strong>
+				</span>
+			@enderror
+			<button type="submit">Masuk</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Selamat Datang Kembali!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Masuk</button>
 			</div>
-			<div class="carousel-item">
-				<div id="home" class="first-section" style="background-image:url('frontend/images/slider-02.jpg');">
-					<div class="dtab">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-12 col-sm-12 text-left">
-									<div class="big-tagline">
-										<h2 data-animation="animated zoomInRight">SmartEDU <strong>education school</strong></h2>
-										<p class="lead" data-animation="animated fadeInLeft">With Landigoo responsive landing page template, you can promote your all hosting, domain and email services. </p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
-									</div>
-								</div>
-							</div><!-- end row -->            
-						</div><!-- end container -->
-					</div>
-				</div><!-- end section -->
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Teman!</h1>
+				<p>Klik Dibawah Sini Untuk Daftar Sebagai Peserta PPDB Ya...</p>
+				<button class="ghost" id="signUp">Daftar PPDB</button>
 			</div>
-			<div class="carousel-item">
-				<div id="home" class="first-section" style="background-image:url('frontend/images/slider-03.jpg');">
-					<div class="dtab">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-12 col-sm-12 text-center">
-									<div class="big-tagline">
-										<h2 data-animation="animated zoomInRight"><strong>VPS Servers</strong> Company</h2>
-										<p class="lead" data-animation="animated fadeInLeft">1 IP included with each server 
-											Your Choice of any OS (CentOS, Windows, Debian, Fedora)
-											FREE Reboots</p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
-									</div>
-								</div>
-							</div><!-- end row -->            
-						</div><!-- end container -->
-					</div>
-				</div><!-- end section -->
-			</div>
-			<!-- Left Control -->
-			<a class="new-effect carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-				<span class="fa fa-angle-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-
-			<!-- Right Control -->
-			<a class="new-effect carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-				<span class="fa fa-angle-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
 		</div>
 	</div>
-	
-    <div id="overviews" class="section wb">
-        <div class="container">
-            <div class="section-title row text-center">
-                <div class="col-md-8 offset-md-2">
-                    <h3>About</h3>
-                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
-                </div>
-            </div><!-- end title -->
-        
-            <div class="row align-items-center">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div class="message-box">
-                        <h4>2018 BEST SmartEDU education school</h4>
-                        <h2>Welcome to SmartEDU education school</h2>
-                        <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+</div>
 
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum neque. </p>
+<footer>
+</footer>
 
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
-                    </div><!-- end messagebox -->
-                </div><!-- end col -->
-				
-				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div class="post-media wow fadeIn">
-                        <img src="{{asset('frontend')}}/images/about_02.jpg" alt="" class="img-fluid img-rounded">
-                    </div><!-- end media -->
-                </div><!-- end col -->
-			</div>
-			<div class="row align-items-center">
-				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div class="post-media wow fadeIn">
-                        <img src="{{asset('frontend')}}/images/about_03.jpg" alt="" class="img-fluid img-rounded">
-                    </div><!-- end media -->
-                </div><!-- end col -->
-				
-				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div class="message-box">
-                        <h2>The standard Lorem Ipsum passage, used since the 1500s</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<style>
 
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum.</p>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
-                    </div><!-- end messagebox -->
-                </div><!-- end col -->
-				
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+* {
+box-sizing: border-box;
+}
 
-    <section class="section lb page-section">
-		<div class="container">
-			 <div class="section-title row text-center">
-                <div class="col-md-8 offset-md-2">
-                    <h3>Our history</h3>
-                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
-                </div>
-            </div><!-- end title -->
-			<div class="timeline">
-				<div class="timeline__wrap">
-					<div class="timeline__items">
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-01">
-								<h2>2018</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-02">
-								<h2>2015</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-03">
-								<h2>2014</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-04">
-								<h2>2012</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-01">
-								<h2>2010</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-02">
-								<h2>2007</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-03">
-								<h2>2004</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<div class="timeline__item">
-							<div class="timeline__content img-bg-04">
-								<h2>2002</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim neque condimentum lacus dapibus. Lorem
-									ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+body {
+background: #f6f5f7;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+font-family: 'Montserrat', sans-serif;
+height: 100vh;
+margin: -20px 0 50px;
+}
 
-	<div class="section cl">
-		<div class="container">
-			<div class="row text-left stat-wrap">
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-study"></i></span>
-					<p class="stat_count">12000</p>
-					<h3>Students</h3>
-				</div><!-- end col -->
+h1 {
+font-weight: bold;
+margin: 0;
+}
 
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-online"></i></span>
-					<p class="stat_count">240</p>
-					<h3>Courses</h3>
-				</div><!-- end col -->
+h2 {
+text-align: center;
+}
 
-				<div class="col-md-4 col-sm-4 col-xs-12">
-					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-years"></i></span>
-					<p class="stat_count">55</p>
-					<h3>Years Completed</h3>
-				</div><!-- end col -->
-			</div><!-- end row -->
-		</div><!-- end container -->
-	</div><!-- end section -->
+p {
+font-size: 14px;
+font-weight: 100;
+line-height: 20px;
+letter-spacing: 0.5px;
+margin: 20px 0 30px;
+}
 
-    <div id="plan" class="section lb">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Choose Your Plan</h3>
-                <p>Lorem ipsum dolor sit aet, consectetur adipisicing lit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div><!-- end title -->
+span {
+font-size: 12px;
+}
 
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div class="message-box">
-                        <ul class="nav nav-pills nav-stacked" id="myTabs">
-                            <li><a class="active" href="#tab1" data-toggle="pill">Monthly Subscription</a></li>
-                            <li><a href="#tab2" data-toggle="pill">Yearly Subscription</a></li>
-                        </ul>
-                    </div>
-                </div><!-- end col -->
-            </div>
+a {
+color: #333;
+font-size: 14px;
+text-decoration: none;
+margin: 15px 0;
+}
 
-            <hr class="invis">
+button {
+border-radius: 20px;
+border: 1px solid #2ac728;
+background-color: #2ac728;
+color: #FFFFFF;
+font-size: 12px;
+font-weight: bold;
+padding: 12px 45px;
+letter-spacing: 1px;
+text-transform: uppercase;
+transition: transform 80ms ease-in;
+}
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="tab-content">
-                        <div class="tab-pane active fade show" id="tab1">
-                            <div class="row text-center">
-                                <div class="col-md-4">
-                                    <div class="pricing-table pricing-table-highlighted">
-                                        <div class="pricing-table-header grd1">
-                                            <h2>$45</h2>
-                                            <h3>per month</h3>
-                                        </div>
-                                        <div class="pricing-table-space"></div>
-                                        <div class="pricing-table-features">
-                                            <p><i class="fa fa-envelope-o"></i> <strong>250</strong> Email Addresses</p>
-                                            <p><i class="fa fa-rocket"></i> <strong>125GB</strong> of Storage</p>
-                                            <p><i class="fa fa-database"></i> <strong>140</strong> Databases</p>
-                                            <p><i class="fa fa-link"></i> <strong>60</strong> Domains</p>
-                                            <p><i class="fa fa-life-ring"></i> <strong>24/7 Unlimited</strong> Support</p>
-                                        </div>
-                                        <div class="pricing-table-sign-up">
-                                            <a href="#" class="hover-btn-new orange"><span>Order Now</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="pricing-table pricing-table-highlighted">
-                                        <div class="pricing-table-header grd1">
-                                            <h2>$59</h2>
-                                            <h3>per month</h3>
-                                        </div>
-                                        <div class="pricing-table-space"></div>
-                                        <div class="pricing-table-features">
-                                            <p><i class="fa fa-envelope-o"></i> <strong>150</strong> Email Addresses</p>
-                                            <p><i class="fa fa-rocket"></i> <strong>65GB</strong> of Storage</p>
-                                            <p><i class="fa fa-database"></i> <strong>60</strong> Databases</p>
-                                            <p><i class="fa fa-link"></i> <strong>30</strong> Domains</p>
-                                            <p><i class="fa fa-life-ring"></i> <strong>24/7 Unlimited</strong> Support</p>
-                                        </div>
-                                        <div class="pricing-table-sign-up">
-                                            <a href="#" class="hover-btn-new orange"><span>Order Now</span></a>
-                                        </div>
-                                    </div>
-                                </div>
+button:active {
+transform: scale(0.95);
+}
 
-                                <div class="col-md-4">
-                                    <div class="pricing-table pricing-table-highlighted">
-                                        <div class="pricing-table-header grd1">
-                                            <h2>$85</h2>
-                                            <h3>per month</h3>
-                                        </div>
-                                        <div class="pricing-table-space"></div>
-                                        <div class="pricing-table-features">
-                                            <p><i class="fa fa-envelope-o"></i> <strong>250</strong> Email Addresses</p>
-                                            <p><i class="fa fa-rocket"></i> <strong>125GB</strong> of Storage</p>
-                                            <p><i class="fa fa-database"></i> <strong>140</strong> Databases</p>
-                                            <p><i class="fa fa-link"></i> <strong>60</strong> Domains</p>
-                                            <p><i class="fa fa-life-ring"></i> <strong>24/7 Unlimited</strong> Support</p>
-                                        </div>
-                                        <div class="pricing-table-sign-up">
-                                            <a href="#" class="hover-btn-new orange"><span>Order Now</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end row -->
-                        </div><!-- end pane -->
+button:focus {
+outline: none;
+}
 
-                        <div class="tab-pane fade" id="tab2">
-                            <div class="row text-center">
-                                <div class="col-md-4">
-                                    <div class="pricing-table pricing-table-highlighted">
-                                        <div class="pricing-table-header grd1">
-                                            <h2>$477</h2>
-                                            <h3>Year</h3>
-                                        </div>
-                                        <div class="pricing-table-space"></div>
-                                        <div class="pricing-table-features">
-                                            <p><i class="fa fa-envelope-o"></i> <strong>250</strong> Email Addresses</p>
-                                            <p><i class="fa fa-rocket"></i> <strong>125GB</strong> of Storage</p>
-                                            <p><i class="fa fa-database"></i> <strong>140</strong> Databases</p>
-                                            <p><i class="fa fa-link"></i> <strong>60</strong> Domains</p>
-                                            <p><i class="fa fa-life-ring"></i> <strong>24/7 Unlimited</strong> Support</p>
-                                        </div>
-                                        <div class="pricing-table-sign-up">
-                                            <a href="#" class="hover-btn-new orange"><span>Order Now</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="pricing-table pricing-table-highlighted">
-                                        <div class="pricing-table-header grd1">
-                                            <h2>$485</h2>
-                                            <h3>Year</h3>
-                                        </div>
-                                        <div class="pricing-table-space"></div>
-                                        <div class="pricing-table-features">
-                                            <p><i class="fa fa-envelope-o"></i> <strong>150</strong> Email Addresses</p>
-                                            <p><i class="fa fa-rocket"></i> <strong>65GB</strong> of Storage</p>
-                                            <p><i class="fa fa-database"></i> <strong>60</strong> Databases</p>
-                                            <p><i class="fa fa-link"></i> <strong>30</strong> Domains</p>
-                                            <p><i class="fa fa-life-ring"></i> <strong>24/7 Unlimited</strong> Support</p>
-                                        </div>
-                                        <div class="pricing-table-sign-up">
-                                            <a href="#" class="hover-btn-new orange"><span>Order Now</span></a>
-                                        </div>
-                                    </div>
-                                </div>
+button.ghost {
+background-color: transparent;
+border-color: #FFFFFF;
+}
 
-                                <div class="col-md-4">
-                                    <div class="pricing-table pricing-table-highlighted">
-                                        <div class="pricing-table-header grd1">
-                                            <h2>$500</h2>
-                                            <h3>Year</h3>
-                                        </div>
-                                        <div class="pricing-table-space"></div>
-                                        <div class="pricing-table-features">
-                                            <p><i class="fa fa-envelope-o"></i> <strong>250</strong> Email Addresses</p>
-                                            <p><i class="fa fa-rocket"></i> <strong>125GB</strong> of Storage</p>
-                                            <p><i class="fa fa-database"></i> <strong>140</strong> Databases</p>
-                                            <p><i class="fa fa-link"></i> <strong>60</strong> Domains</p>
-                                            <p><i class="fa fa-life-ring"></i> <strong>24/7 Unlimited</strong> Support</p>
-                                        </div>
-                                        <div class="pricing-table-sign-up">
-                                            <a href="#" class="hover-btn-new orange"><span>Order Now</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end row -->
-                        </div><!-- end pane -->
-                    </div><!-- end content -->
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+form {
+background-color: #FFFFFF;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 0 50px;
+height: 100%;
+text-align: center;
+}
 
-    <div id="testimonials" class="parallax section db parallax-off" style="background-image:url('frontend/images/parallax_04.jpg');">
-        <div class="container">
-            <div class="section-title text-center">
-                <h3>Testimonials</h3>
-                <p>Lorem ipsum dolor sit aet, consectetur adipisicing lit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            </div><!-- end title -->
+input {
+background-color: #eee;
+border: none;
+padding: 12px 15px;
+margin: 8px 0;
+width: 100%;
+}
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="testi-carousel owl-carousel owl-theme">
-                        <div class="testimonial clearfix">
-							<div class="testi-meta">
-                                <img src="{{asset('frontend')}}/images/testi_01.png" alt="" class="img-fluid">
-                                <h4>James Fernando </h4>
-                            </div>
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
-                                <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
+.container {
+background-color: #fff;
+border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+		0 10px 10px rgba(0,0,0,0.22);
+position: relative;
+overflow: hidden;
+width: 768px;
+max-width: 100%;
+min-height: 480px;
+}
 
-                        <div class="testimonial clearfix">
-							<div class="testi-meta">
-                                <img src="{{asset('frontend')}}/images/testi_02.png" alt="" class="img-fluid">
-                                <h4>Jacques Philips </h4>
-                            </div>
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
-                                <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
+.form-container {
+position: absolute;
+top: 0;
+height: 100%;
+transition: all 0.6s ease-in-out;
+}
 
-                        <div class="testimonial clearfix">
-							<div class="testi-meta">
-                                <img src="{{asset('frontend')}}/images/testi_03.png" alt="" class="img-fluid ">
-                                <h4>Venanda Mercy </h4>
-                            </div>
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
-                        <div class="testimonial clearfix">
-							<div class="testi-meta">
-                                <img src="{{asset('frontend')}}/images/testi_01.png" alt="" class="img-fluid">
-                                <h4>James Fernando </h4>
-                            </div>
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
-                                <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
+.sign-in-container {
+left: 0;
+width: 50%;
+z-index: 2;
+}
 
-                        <div class="testimonial clearfix">
-							<div class="testi-meta">
-                                <img src="{{asset('frontend')}}/images/testi_02.png" alt="" class="img-fluid">
-                                <h4>Jacques Philips </h4>
-                            </div>
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
-                                <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div>
-                        <!-- end testimonial -->
+.container.right-panel-active .sign-in-container {
+transform: translateX(100%);
+}
 
-                        <div class="testimonial clearfix">
-							<div class="testi-meta">
-                                <img src="{{asset('frontend')}}/images/testi_03.png" alt="" class="img-fluid">
-                                <h4>Venanda Mercy </h4>
-                            </div>
-                            <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                                <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                            </div>
-                            <!-- end testi-meta -->
-                        </div><!-- end testimonial -->
-                    </div><!-- end carousel -->
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+.sign-up-container {
+left: 0;
+width: 50%;
+opacity: 0;
+z-index: 1;
+}
 
-    <div class="parallax section dbcolor">
-        <div class="container">
-            <div class="row logos">
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{asset('frontend')}}/images/logo_01.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{asset('frontend')}}/images/logo_02.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{asset('frontend')}}/images/logo_03.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{asset('frontend')}}/images/logo_04.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{asset('frontend')}}/images/logo_05.png" alt="" class="img-repsonsive"></a>
-                </div>
-                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
-                    <a href="#"><img src="{{asset('frontend')}}/images/logo_06.png" alt="" class="img-repsonsive"></a>
-                </div>
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
+.container.right-panel-active .sign-up-container {
+transform: translateX(100%);
+opacity: 1;
+z-index: 5;
+animation: show 0.6s;
+}
 
-@endsection
+@keyframes show {
+0%, 49.99% {
+	opacity: 0;
+	z-index: 1;
+}
+
+50%, 100% {
+	opacity: 1;
+	z-index: 5;
+}
+}
+
+.overlay-container {
+position: absolute;
+top: 0;
+left: 50%;
+width: 50%;
+height: 100%;
+overflow: hidden;
+transition: transform 0.6s ease-in-out;
+z-index: 100;
+}
+
+.container.right-panel-active .overlay-container{
+transform: translateX(-100%);
+}
+
+.overlay {
+background: #FF416C;
+background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+background: linear-gradient(to right, #2ac728, #2d732c);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 0 0;
+color: #FFFFFF;
+position: relative;
+left: -100%;
+height: 100%;
+width: 200%;
+	transform: translateX(0);
+transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+	transform: translateX(50%);
+}
+
+.overlay-panel {
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 0 40px;
+text-align: center;
+top: 0;
+height: 100%;
+width: 50%;
+transform: translateX(0);
+transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+transform: translateX(0);
+}
+
+.overlay-right {
+right: 0;
+transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+transform: translateX(20%);
+}
+
+.social-container {
+margin: 20px 0;
+}
+
+.social-container a {
+border: 1px solid #DDDDDD;
+border-radius: 50%;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+margin: 0 5px;
+height: 40px;
+width: 40px;
+}
+
+footer {
+	background-color: #222;
+	color: #fff;
+	font-size: 14px;
+	bottom: 0;
+	position: fixed;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: 999;
+}
+
+footer p {
+	margin: 10px 0;
+}
+
+footer i {
+	color: red;
+}
+
+footer a {
+	color: #3c97bf;
+	text-decoration: none;
+}
+</style>
+
+<script>
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+
+	signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+	});
+
+	signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+	});
+</script>

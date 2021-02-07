@@ -17,6 +17,7 @@
                         <a href="{{ url('peserta') }}" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-refresh"></i> All Peserta</a>
 
                         <a href="{{ url('peserta/verifikasi') }}" class="btn btn-sm btn-flat btn-success"><i class="fa fa-refresh"></i> Di verfifikasi</a>
+                        
 
                         <a href="{{ url('peserta/belum-verifikasi') }}" class="btn btn-sm btn-flat btn-danger"><i class="fa fa-refresh"></i> Belum Di verfifikasi</a>
                     </p>

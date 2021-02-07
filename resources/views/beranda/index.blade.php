@@ -4,51 +4,48 @@
 @stop
 
 @section('content')
-	
+
     <div id="contact" class="section wb">
         <div class="container">
             <div class="section-title text-center">
-                <h3>Need Help? Sure we are Online!</h3>
-                <p class="lead">Let us give you more details about the special offer website you want us. Please fill out the form below. <br>We have million of website owners who happy to work with us!</p>
+							@if($cek < 1)
+                <h3>Harap Melengkapi Biodata Siswa Terlebih Dahulu</h3>
+								<p>
+                    <center>
+                        <a target="_blank" href="{{ url('biodata-siswa') }}" class="btn btn-flat btn-success">Isi Biodata Siswa</a>
+                    </center>
+                </p>
+								@else
+								<h3>Biodata Siswa Sudah Lengkap</h3>
+								<p> Harap Mengisi Biodata Wali
+                    <center>
+                        <a target="_blank" href="{{ url('biodata-wali') }}" class="btn btn-flat btn-success">Isi Biodata Wali</a>
+                    </center>
+                </p>
+								<p> Harap Mengisi Dokumen
+                    <center>
+                        <a target="_blank" href="{{ url('dokumen') }}" class="btn btn-flat btn-success">Isi Dokumen</a>
+                    </center>
+                </p>
+								@if($cek_nilai < 1)
+								<p> Harap Mengisi Nilai
+                    <center>
+                        <a target="_blank" href="{{ url('nilai') }}" class="btn btn-flat btn-success">Isi Nilai</a>
+                    </center>
+                </p>
+								@else
+								<p> Harap Cek Kembali Nilai Anda Lalu Konfirmasi
+                    <center>
+                        <a target="_blank" href="{{ url('nilai') }}" class="btn btn-flat btn-warning">Cek Nilai</a>
+                    </center>
+                </p>
+								@endif
+							@endif
             </div><!-- end title -->
-
-            <div class="row">
-                <div class="col-xl-6 col-md-12 col-sm-12">
-                    <div class="contact_form">
-                        <div id="message"></div>
-                        <form id="contactform" class="" action="contact.php" name="contactform" method="post">
-                            <div class="row row-fluid">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Kelas 5 Semester 1">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone">
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Give us more details.."></textarea>
-                                </div>
-                                <div class="text-center pd">
-                                    <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Get a Quote</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div><!-- end col -->
-				<div class="col-xl-6 col-md-12 col-sm-12">
-					<div class="map-box">
-						<div id="custom-places" class="small-map"></div>
-					</div>
-				</div>
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
-	
+
 	<div class="parallax section dbcolor">
         <div class="container">
             <div class="row logos">

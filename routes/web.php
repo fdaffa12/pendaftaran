@@ -71,6 +71,9 @@ Route::get('peserta/details/{id}', 'Admin\PesertaController@detail')->middleware
 Route::get('peserta/{id}/lulus','Admin\PesertaController@lulus')->middleware('admin');
 Route::get('peserta/{id}/lulus-batal','Admin\PesertaController@lulusBatal')->middleware('admin');
 Route::get('peserta/{id}/verifikasi','Admin\PesertaController@verifikasi')->middleware('admin');
+Route::get('peserta/verifikasi', 'Admin\PesertaController@diverifikasi');
+Route::get('peserta/melengkapi', 'Admin\PesertaController@melengkapi');
+Route::get('peserta/belum-verifikasi', 'Admin\PesertaController@belum_verifikasi');
 Route::get('peserta/{id}/verifikasi-batal','Admin\PesertaController@verifikasiBatal')->middleware('admin');
 Route::get('peserta-nilai/{id}/verifikasinilai-batal','Admin\PesertaController@verifikasiNilaiBatal')->middleware('admin');
 Route::put('peserta/{id}', 'Admin\PesertaController@verifikasiNilai')->middleware('admin');
